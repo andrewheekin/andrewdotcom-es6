@@ -1,5 +1,21 @@
+$desktop: 'screen and (min-width:992px)';
+$mobile-portrait: 'screen and (max-width:991px) and (orientation:portrait)';
+$mobile-landscape: 'screen and (max-width:991px) and (orientation:landscape)';
 
-/*####### ALL MEDIA ########*/
+.desktop {
+  @media #{$mobile-portrait} {
+    display: none!important;
+  }
+  @media #{$mobile-landscape} {
+    display: none!important;
+  }
+}
+
+.mobile-portrait {
+  @media #{$desktop} {
+    display: none!important;
+  }
+}
 
 .input-group {
   margin: 20px 0px;
@@ -10,32 +26,46 @@ td, th {
   text-align: center !important;
 }
 
-td:first-of-type {
-  height: 200px;
-  width: 250px;
+td {
+  &:first-of-type {
+    height: 200px;
+    width: 250px;
+  }
 }
-.side-nav ul {
-  list-style-type: none;
-  padding: 0px;
-  margin-right: 0px;
+.side-nav {
+  @media #{$desktop} {
+    font-size: 19px;
+  }
+  ul {
+    list-style-type: none;
+    padding: 0px;
+    margin-right: 0px;
+  }
+  li {
+    padding-bottom: 7px;
+  }
+  a {
+    &:focus {
+      text-decoration: none;
+    }
+    &:active {
+      text-decoration: underline;
+    }
+  }
 }
-.side-nav li {
-  padding-bottom: 7px;
+
+.contact {
+  ul {
+    list-style-type: none;
+    padding: 0px;
+    margin-right: 0px;
+  }
 }
-.side-nav a:focus {
-  text-decoration: none;
-}
-.side-nav a:active {
-  text-decoration: underline;
-}
-.contact ul {
-  list-style-type: none;
-  padding: 0px;
-  margin-right: 0px;
-}
+
 h1, h2, h3, h4, h5, h6, p, div {
   font-family: 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;
 }
+
 .about *,
 .projects p,
 .projects h1,
@@ -44,44 +74,73 @@ h1, h2, h3, h4, h5, h6, p, div {
 .project-page * {
   font-family: 'avenir', 'avenir next', helvetica, arial, sans-serif;
 }
-.projects h1 {
-  font-weight:bold;
-  margin-bottom: 25px;
-  color:#555555;
+
+.projects {
+  @media #{$desktop} {
+    margin-top: 30px;
+  }
+  h1 {
+    font-weight:bold;
+    margin-bottom: 25px;
+    color:#555555;
+    &:hover {
+      color:#000000;
+    }
+  }
+  a {
+    color:#333;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+  p {
+    font-size: 1.2em;
+    line-height: 1.5;
+  }
 }
-.projects h1:hover {
-  color:#000000;
+
+.project-page {
+  @media #{$desktop} {
+    margin-top: 30px;
+  }
+  h1 {
+    font-weight:bold;
+    margin-bottom: 25px;
+    color:#555555;
+  }
+  p {
+    font-size: 1.2em;
+    line-height: 1.5;
+  }
 }
-.projects a:hover {
-  text-decoration: none;
-}
-.projects a {
-  color:#333;
-}
-.projects p {
-  font-size: 1.2em;
-  line-height: 1.5;
-}
-.project-page h1 {
-  font-weight:bold;
-  margin-bottom: 25px;
-  color:#555555;
-}
-.project-page p {
-  font-size: 1.2em;
-  line-height: 1.5;
-}
+
 img.bot-img {
   height:90px;
   margin-bottom: 15px;
 }
+
 img.andrew-img {
   height:100px;
   border-radius:60px;
+  @media #{$mobile-portrait} {
+    display: block;
+    margin: auto;
+  }
+  @media #{$desktop} {
+    margin-left: 30px;
+  }
 }
+
 .main-header {
   vertical-align: bottom;
   text-align: center;
+  @media #{$desktop} {
+    display: inline;
+    margin-left: 30px;
+  }
+  @media #{$mobile-portrait} {
+    display: block;
+  }
 }
 .header-link,
 .header-link:hover {
@@ -93,18 +152,24 @@ img.andrew-img {
 }
 .resume {
   height: 1050px;
+  @media #{$mobile-portrait} {
+    width:750px !important;
+  }
 }
 .social {
   display: inline-block;
   vertical-align: bottom;
   margin-bottom: -10px;
-}
-.social ul li {
+  @media #{$mobile-portrait} {
+    width: 90%;
+    text-align: center;
+  }
+  ul li {
     margin: 5px;
     list-style: none outside none;
     display: inline-block;
-}
-.social i {
+  }
+  i {
     width: 35px;
     height: 35px;
     color: #FFF;
@@ -121,28 +186,30 @@ img.andrew-img {
     -webkit-transition: all ease 0.3s;
     -o-transition: all ease 0.3s;
     -ms-transition: all ease 0.3s;
-}
-.social i:hover {
-    color: #FFF;
-    text-decoration: none;
-    transition: all ease 0.3s;
-    -moz-transition: all ease 0.3s;
-    -webkit-transition: all ease 0.3s;
-    -o-transition: all ease 0.3s;
-    -ms-transition: all ease 0.3s;
-}
-.social .fa-envelope:hover {
+    &:hover {
+      color: #FFF;
+      text-decoration: none;
+      transition: all ease 0.3s;
+      -moz-transition: all ease 0.3s;
+      -webkit-transition: all ease 0.3s;
+      -o-transition: all ease 0.3s;
+      -ms-transition: all ease 0.3s;
+    }
+  }
+  .fa-envelope:hover {
     background: #4D86C9;
-}
-.social .fa-twitter:hover {
+  }
+  .fa-twitter:hover {
     background: #00ABE3;
-}
-.social .fa-github:hover {
+  }
+  .fa-github:hover {
     background: #343434;
-}
-.social .fa-linkedin:hover {
+  }
+  .fa-linkedin:hover {
     background: #0094BC;
+  }
 }
+
 .footer {
   padding-top: 80px;
   padding-bottom: 20px;
@@ -170,76 +237,10 @@ img.andrew-img {
   font-size: 1em;
   display: inline;
 }
-/*####### (end all media) ########*/
 
 
-/*####### MOBILE <992px PORTRAIT ########*/
-
-@media screen and (max-width:991px) and (orientation:portrait) { 
-  .desktop {
-    display: none !important;
-  }
-  .mobile {
-    display: block !important;
-  }
-  .main-header {
-    display: block;
-  }
-  img.andrew-img {
-    display: block;
-    margin: auto;
-  }
-  .social {
-    width: 90%;
-    text-align: center;
-  }
-  .resume {
-    width:750px !important;
-  }
-}
-/*####### (end mobile <992px portrait) ########*/
-
-
-/*####### MOBILE <992px LANDSCAPE ########*/
-
-@media screen and (max-width:991px) and (orientation:landscape) { 
-  .desktop {
-    display: none !important;
-  }
-  .mobile {
-    display: block !important;
-  }
-}
-/*####### (end mobile <992px landscape) ########*/
-
-
-/*####### DESKTOP >=992px ########*/
-
-@media screen and (min-width:992px) {
-  .desktop {
-    display: block !important;
-  }
-  .mobile {
-    display: none !important;
-  }
-  .main-header {
-    display: inline;
-    margin-left: 30px;
-  }
-  img.andrew-img {
-    margin-left: 30px;
-  }
-  .side-nav {
-    font-size: 19px;
-  }
-  .about-section {
+.about-section {
+  @media #{$desktop} {
     padding-bottom: 10px;
   }
-  .projects {
-    margin-top: 30px;
-  }
-  .project-page {
-    margin-top: 30px;
-  }  
 }
-/*####### (end desktop >=992px) ########*/
