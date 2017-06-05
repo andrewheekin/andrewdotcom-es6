@@ -1,0 +1,21 @@
+.side-nav {
+  @media #{$desktop} {
+    font-size: 19px;
+  }
+  ul {
+    list-style-type: none;
+    padding: 0px;
+    margin-right: 0px;
+  }
+  li {
+    padding-bottom: 7px;
+  }
+  a {
+    &:focus {
+      text-decoration: none;
+    }
+    &:active {
+      text-decoration: underline;
+    }
+  }
+}

@@ -19,7 +19,8 @@
   },
   "homepage": "https://github.com/andrewheekin/andrewdotcom-es6#readme",
   "dependencies": {
-    "navigo": "^5.0.2"
+    "navigo": "^5.0.2",
+    "prismjs": "^1.6.0"
   },
   "devDependencies": {
     "extract-text-webpack-plugin": "^2.1.0",

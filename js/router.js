@@ -4,7 +4,8 @@ import Navigo from 'navigo';
 import { loadHTML, $id } from './util';
 
 //components scripts
-import projects from '../components/projects/projects';
+import { projects } from '../components/projects/projects';
+import { learnJS } from '../components/learnJS/learnJS';
 
 
 let router = new Navigo(null, true, '#!');
@@ -13,6 +14,7 @@ router.on({
   'about': () => { loadHTML('../components/about.html', 'view') },
   'contact': () => { loadHTML('../components/contact.html', 'view') },
   'projects': () => { loadHTML('../components/projects/projects.html', 'view', projects) },
+  'javascript': () => { loadHTML('../components/learnJS/learnJS.html', 'view', learnJS) },
   // project pages
   'mochibox': () => { loadHTML('../components/projects/mochibox/mochibox.html', 'view') },
   'this-website': () => { loadHTML('../components/projects/this-website/this-website.html', 'view') },

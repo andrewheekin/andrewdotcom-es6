@@ -1,4 +1,4 @@
-export default function projects() {
+export function projects() {
 
   const projects = [
     {
