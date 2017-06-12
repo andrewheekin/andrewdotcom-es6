@@ -4,7 +4,9 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">  
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- rely on client side routing -->
-    <script>history.pushState({}, "entry page", location.hash.substring(1));</script>        
+    <script>history.pushState({}, "entry page", location.hash.substring(1));</script>
+    <!-- base sets path for relative location of js/css resources -->
+    <base href="/">
     <link rel="stylesheet" href="./build/css/bundle.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">    
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet"> 
