@@ -34,5 +34,8 @@ module.exports = {
   ],  
   resolve: {
     extensions: ['.js']
+  },
+  devServer: {
+    historyApiFallback: true
   }
 };

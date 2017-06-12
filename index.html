@@ -3,10 +3,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">  
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- rely on client side routing -->
+    <script>history.pushState({}, "entry page", location.hash.substring(1));</script>        
     <link rel="stylesheet" href="./build/css/bundle.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">    
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet"> 
     <title>andrew heekin</title>
+    <!-- open graph -->
     <meta property="og:title" content="Andrew Heekin">
     <meta property="og:url" content="http://andrewheekin.com">
     <meta property="og:description" content="welcome to andrewheekin.com">    
@@ -33,7 +36,7 @@
         <div class="col-md-2">
           <div class="side-nav">
             <ul>
-              <li><a href="/" data-navigo>Projects</a></li>
+              <li><a href="/projects" data-navigo>Projects</a></li>
               <li><a href="/javascript" data-navigo>Javascript</a></li>
               <li><a href="/about" data-navigo>About</a></li>
               <li><a href="/contact" data-navigo>Contact</a></li>

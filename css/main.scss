@@ -10,8 +10,8 @@ $mobile-landscape: 'screen and (max-width:991px) and (orientation:landscape)';
 @import 'header';
 @import 'sidenav';
 @import 'footer';
-@import 'projects';
-@import 'learnJS';
+@import '../components/projects/projects';
+@import '../components/learnJS/learnJS';
 
 
 body {
