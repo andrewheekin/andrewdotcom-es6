@@ -1,9 +1,16 @@
 import { router } from '../../js/scripts';
 
-function projects() {
+export function projects() {
 
   const projects = [
     {
+      title: 'Bust a cache',
+      url: '/bust-a-cache',
+      author: 'Andrew Heekin',
+      date: '18 JULY 2017',
+      description: `To make broswing more efficient and quicker, most browsers will cache familiar external
+      resources like images, css, etc. But when an external script changes to`
+    },{
       title: 'Mochibox',
       url: '/mochibox',
       author: 'Andrew Heekin',
@@ -63,5 +70,3 @@ function projects() {
   router.updatePageLinks();  // call binds new <a href>'s to Navigo
 
 }
-
-export { projects };

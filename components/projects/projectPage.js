@@ -1,8 +1,37 @@
-function projectPage(page) {
+import 'prismjs';
+import { $id } from '../../js/util'
+
+export function projectPage(page) {
 
   let html = '';
 
   switch (page) {
+
+    case 'bust-a-cache':
+      html = `
+        <div class="project-page">
+          <h1>Bust a cache</h1>
+          <p>To make broswing more efficient and quicker, most browsers will cache familiar external
+          resources like images, css, etc. But when an external script changes to 
+          deliver new functionality or content to a website, there's a risk the script has been 
+          cached and the browser will the new version. To prevent caching, add a query string of choice (the current 
+          UTC timestamp works fine) to the end of the file name to trick the browser's caching mechanism 
+          into thinking a new resource is present:
+          </p>
+          <br />
+          <pre class="language-html"><code id="code">
+  <script>
+    ( function (m, o, c, h, i) {
+        h = m.createElement(o);
+        i = m.getElementsByTagName(o)[0];
+        h.src = c + '?v=' + (new Date().getTime());
+        i.parentNode.insertBefore(h, i);
+      } ) ( document, 'script', 'https://cdn.com/path/script.js');
+   </script>
+          </code></pre>
+        </div>
+      `;
+      break;
 
     case 'this-website':
       html = `
@@ -88,6 +117,5 @@ function projectPage(page) {
   }
 
   document.getElementById('view').innerHTML = html;
+  $id('code').innerHTML = Prism.highlight($id('code').innerHTML, Prism.languages.javascript);  
 }
-
-export { projectPage };

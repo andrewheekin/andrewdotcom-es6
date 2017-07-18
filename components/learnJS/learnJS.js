@@ -1,7 +1,7 @@
 import 'prismjs';
 import { $id } from '../../js/util';
 
-function learnJS() {
+export function learnJS() {
 
   let html = `
     <div id="learnJS">
@@ -23,5 +23,3 @@ function learnJS() {
   $id('code').innerHTML = Prism.highlight($id('code').innerHTML, Prism.languages.javascript);
 
 }
-
-export { learnJS };

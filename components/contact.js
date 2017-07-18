@@ -1,4 +1,4 @@
-function contact() {
+export function contact() {
   
   let html = `
     <div class="contact">
@@ -13,5 +13,3 @@ function contact() {
   
   document.getElementById('view').innerHTML = html;
 }
-
-export { contact };

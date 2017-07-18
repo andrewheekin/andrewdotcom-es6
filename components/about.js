@@ -1,4 +1,4 @@
-function about() {
+export function about() {
   
   let html = `
     <div class="about">
@@ -28,5 +28,3 @@ function about() {
   
   document.getElementById('view').innerHTML = html;
 }
-
-export { about };
