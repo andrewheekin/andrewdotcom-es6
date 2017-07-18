@@ -1,4 +1,4 @@
-import { router } from '../../js/router';
+import { router } from '../../js/scripts';
 
 function projects() {
 
