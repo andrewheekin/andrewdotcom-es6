@@ -1,4 +1,3 @@
-import 'prismjs';
 import { $id } from '../../js/util';
 
 export function learnJS() {
@@ -7,7 +6,7 @@ export function learnJS() {
     <div id="learnJS">
       <h3>Deep copy a JS object</h3>
       <p>Test test test</p>
-      <pre class="language-javascript"><code id="code">
+      <pre class="language-javascript"><code class="code">
         let copy = () => {
           let extended = {};
           for (key in arguments)
@@ -20,6 +19,4 @@ export function learnJS() {
   `;
 
   $id('view').innerHTML = html;
-  $id('code').innerHTML = Prism.highlight($id('code').innerHTML, Prism.languages.javascript);
-
 }

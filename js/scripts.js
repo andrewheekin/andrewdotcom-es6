@@ -1,7 +1,8 @@
 'use strict';
 
+import 'prismjs';
 import Navigo from 'navigo';
-import { $id } from './util';
+import { $id, $cl } from './util';
 
 //components scripts
 import { about } from '../components/about';
@@ -29,5 +30,11 @@ router.on(() => { projects() });
 router.notFound((query) => { $id('view').innerHTML = '<h3>Couldn\'t find the page you\'re looking for...</h3>' })
 
 router.resolve();
+
+// render all code with prism highlighting
+for (var i=0; i<$cl('code').length; i++) {
+  let el = $cl('code')[i];
+  el.innerHTML = Prism.highlight(el.innerHTML, Prism.languages.javascript);
+}
 
 export { router };
