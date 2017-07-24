@@ -1,3 +1,5 @@
+import { highlight } from '../../js/scripts';
+
 export function projectPage(page) {
 
   let html = '';
@@ -8,14 +10,15 @@ export function projectPage(page) {
       html = `
         <div class="project-page">
           <h1>Bust a cache</h1>
-          <p>To make broswing more efficient and quicker, most browsers will cache familiar external
-          resources like images, css, etc. But when a 3rd party script (like a Mochibox popup) changes to 
+          <p>To make broswing more efficient and quicker, most browsers will cache familiar
+          resources like images, css, etc. But when a 3rd party script changes to 
           deliver new functionality or content to a website, there's a risk the script has been 
           cached and the browser will default to the old version. To prevent caching, add your query string of choice (the current 
           UTC timestamp works fine) to the end of the file name to trick the browser's caching mechanism 
-          into thinking a new resource is present:
+          into thinking a new resource is present.
           </p>
-          <br />
+          <br>
+          <p>Example:</p>
           <pre class="language-html"><code class="code">
   <script>
     ( function (m, o, c, h, i) {
@@ -114,4 +117,6 @@ export function projectPage(page) {
   }
 
   document.getElementById('view').innerHTML = html;
+
+  highlight();
 }

@@ -31,10 +31,13 @@ router.notFound((query) => { $id('view').innerHTML = '<h3>Couldn\'t find the pag
 
 router.resolve();
 
-// render all code with prism highlighting
-for (var i=0; i<$cl('code').length; i++) {
-  let el = $cl('code')[i];
-  el.innerHTML = Prism.highlight(el.innerHTML, Prism.languages.javascript);
+function highlight() {
+  // render all code with prism highlighting
+  for (var i=0; i<$cl('code').length; i++) {
+    let el = $cl('code')[i];
+    el.innerHTML = Prism.highlight(el.innerHTML, Prism.languages.javascript);
+  }
+  console.log('got run');
 }
 
-export { router };
+export { router, highlight };
