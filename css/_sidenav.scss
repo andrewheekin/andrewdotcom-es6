@@ -1,7 +1,13 @@
-.side-nav {
+.side-nav-desktop {
   @media #{$desktop} {
     font-size: 19px;
   }
+  @media #{$mobile-portrait} {
+    display: none!important;
+  }
+  @media #{$mobile-landscape} {
+    display: none!important;
+  }  
   ul {
     list-style-type: none;
     padding: 0px;
@@ -18,4 +24,20 @@
       text-decoration: underline;
     }
   }
+}
+
+.side-nav-mobile {
+  @media #{$desktop} {
+    display: none!important;
+  }
+  text-align: center;
+  margin-bottom: 25px;
+  a {
+    &:focus {
+      text-decoration: none;
+    }
+    &:active {
+      text-decoration: underline;
+    }
+  }  
 }

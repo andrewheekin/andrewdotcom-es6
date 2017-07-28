@@ -11,7 +11,7 @@ $mobile-landscape: 'screen and (max-width:991px) and (orientation:landscape)';
 @import 'sidenav';
 @import 'footer';
 @import '../components/projects/projects';
-@import '../components/learnJS/learnJS';
+@import '../components/CS/CS';
 
 
 body {
@@ -69,6 +69,10 @@ td {
 
 h1, h2, h3, h4, h5, h6, p, div {
   font-family: 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;
+}
+
+h1 {
+  font-size: 31px!important;
 }
 
 .about *, .projects *, .contact *, .project-page * {
