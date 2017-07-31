@@ -1,10 +1,7 @@
-import { highlight } from '../../js/scripts';
-
 export class ProjectPage {
   constructor(page) {
     this.page = page;
     this.render();
-    highlight();
   }
 
   render() {
@@ -15,24 +12,22 @@ export class ProjectPage {
         html = `
           <div class="project-page">
             <h1>Bust a cache</h1>
-            <p>To make broswing more efficient and quicker, most browsers will cache familiar
+            <p>To make broswing more efficient and quicker, most browsers will cache familiar external
             resources like images, css, etc. But when an external script changes to 
             deliver new functionality or content to a website, there's a risk the script has been 
-            cached and the browser will default to the old version. To prevent caching, add your query string of choice (the current 
-            UTC timestamp works fine) to the end of the file name to trick the browser's caching mechanism 
+            cached and the browser will default to the old version. To prevent caching, add a query string of choice (the current 
+            UTC timestamp works fine) to the end of the file name to trigger the browser's caching mechanism 
             into thinking a new resource is present.
             </p>
             <br>
             <p>Example:</p>
-            <pre class="language-html"><code class="code">
-    <script>
-      ( function (m, o, c, h, i) {
-          h = m.createElement(o);
-          i = m.getElementsByTagName(o)[0];
-          h.src = c + '?v=' + (new Date().getTime());
-          i.parentNode.insertBefore(h, i);
-        } ) ( document, 'script', 'https://cdn.com/path/script.js');
-     </script>
+            <pre class="language-javascript"><code class="code">
+    (function (m, o, c, h, i){
+      h = m.createElement(o);
+      i = m.getElementsByTagName(o)[0];
+      h.src = c + '?v=' + (new Date().getTime());
+      i.parentNode.insertBefore(h, i);
+    })(document, 'script', 'https://cdn.com/path/script.js');
             </code></pre>
           </div>
         `;

@@ -26,17 +26,14 @@ router.on({
 // default route
 router.on(() => { new Projects() });
 
+// highlight code after every route change
+router.hooks({
+  after: (params) => { Prism.highlightAll() }
+});
+
 // 404 route
 router.notFound((query) => { $id('view').innerHTML = '<h4>Couldn\'t find the page you\'re looking for...</h4>' })
 
 router.resolve();
 
-function highlight() {
-  // render all code with prism highlighting
-  for (var i=0; i<$cl('code').length; i++) {
-    let el = $cl('code')[i];
-    el.innerHTML = Prism.highlight(el.innerHTML, Prism.languages.javascript);
-  }
-}
-
-export { router, highlight };
+export { router };

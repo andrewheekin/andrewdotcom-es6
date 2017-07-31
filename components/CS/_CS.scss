@@ -6,3 +6,26 @@
     font-family: 'avenir', 'avenir next', helvetica, arial, sans-serif;
   }
 }
+
+.code {
+  font-size: 1em;
+  font-family: Menlo,Monaco,Consolas,"Courier New",monospace!important;
+}
+
+.question-chevron {
+  margin-right: 5px;
+  font-size: .8em!important;
+  transition: transform .1s ease;
+}
+
+.question-title {
+  margin-top: 20px!important;
+  &:hover {
+    opacity: .7;
+    text-decoration: underline;
+  }
+}
+
+.question-content {
+  display: none;
+}

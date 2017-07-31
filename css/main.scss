@@ -69,13 +69,19 @@ td {
 
 h1, h2, h3, h4, h5, h6, p, div {
   font-family: 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;
+  &::selection { // change highlight color
+    background: #e9ae42;
+  }
+  &::-moz-selection {
+    background: #e9ae42;
+  }  
 }
 
 h1 {
   font-size: 31px!important;
 }
 
-.about *, .projects *, .contact *, .project-page * {
+.about *, .projects *, .contact *, .project-page p, .project-page h1, #cs h4, #cs p {
   font-family: 'avenir', 'avenir next', helvetica, arial, sans-serif;
 }
 
