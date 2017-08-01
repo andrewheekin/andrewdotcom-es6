@@ -1,8 +1,8 @@
-#faq {
+#cs {
   animation: fade .6s;
   -moz-animation: fade .6s;
   -webkit-animation: fade .6s;
-  p, h3 {
+  p, h3, h4, h5 {
     font-family: 'avenir', 'avenir next', helvetica, arial, sans-serif;
   }
 }
@@ -28,4 +28,8 @@
 
 .question-content {
   display: none;
+}
+
+.tab-1 {
+  margin-left: 30px;
 }

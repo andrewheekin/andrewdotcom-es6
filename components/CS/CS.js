@@ -14,8 +14,13 @@ export class CS {
       let chevron = q.getElementsByClassName('question-chevron')[0];
       
       // expand if 1
-      if (expander[i]) content.style.display = 'block';
-      else expander[i] = 0;
+      if (expander[i]) {
+        content.style.display = 'block';
+        chevron.style.transform = 'rotate(90deg)';
+      }
+      else {
+        expander[i] = 0;
+      }
 
       let j = i;
       title.onclick = () => {
@@ -45,7 +50,8 @@ export class CS {
             Variables are hoisted and are set to the primitive 'undefined'. They are given they value when that
             line is reached.Functions are hoisted and are given their value defined by the code they contain.</p>
             <pre class="language-javascript"><code class="code">
-// this code will successfully execute function b() on line 1 even though it hasn't run the code that defines function b
+// this code will successfully execute function b() on line 1
+// even though it hasn't run the code that defines function b
 b();
 function b() {  console.log('called b'); }
 
@@ -64,15 +70,67 @@ console.log(c);
           <div class="question-content">          
             <p></p>
             <pre class="language-javascript"><code class="code">
-      let copy = () => {
-        let extended = {};
-        for (key in arguments)
-      }
+let copy = () => {
+  let extended = {};
+  for (key in arguments)
+}
 
-      function myFunc() {
-        console.log('a');
-      }
+function myFunc() {
+  console.log('a');
+}
             </code></pre>
+          </div>
+        </div>
+
+        <div class="question">        
+          <h4 class="question-title"><i class="fa fa-chevron-right question-chevron"></i>Store an object in HTML5 localStorage</h4>
+          <div class="question-content">          
+            <!--<p><a href="https://stackoverflow.com/questions/2010892/storing-objects-in-html5-localstorage?noredirect=1&lq=1">
+              Stackoverflow
+            </a></p>-->
+            <p>Since all localStorage values are stored as strings, use JSON.stringify to convert the<br>
+            object to a string, and JSON.parse to parse the string to an object</p>
+            <pre class="language-javascript"><code class="code">
+let obj = {a: 1, b: 'two', c: [1,2,3]};
+localStorage.setItem('obj', JSON.stringify(obj));
+let fetchedObj = JSON.parse(localStorage.getItem('obj'));
+// to remove the value from localStorage
+localStorage.removeItem('obj');
+            </code></pre>
+          </div>
+        </div>
+
+        <div class="question">        
+          <h4 class="question-title"><i class="fa fa-chevron-right question-chevron"></i>JS: Reverse words in place</h4>
+          <div class="question-content">
+            <p>Given a sentence string, reverse all words in the sentence keeping their order</p>
+            <pre class="language-javascript"><code class="code">
+function reverseInPlace(str) {
+  return str.split(' ').reverse().join(' ').split('').reverse().join('');
+}
+            </code></pre>
+          </div>
+        </div>
+
+        <div class="question">
+          <h4 class="question-title"><i class="fa fa-chevron-right question-chevron"></i>JS array methods</h4>
+          <div class="question-content">
+
+          <div class="question tab-1">
+            <h4 class="question-title"><i class="fa fa-chevron-right question-chevron"></i>Array.prototype.concat()</h4>
+            <div class="question-content">
+              <p>Used to join two or more arrays. Doesn't change the existing array, just returns a new joined array</p>
+              <pre class="language-javascript"><code class="code">
+// arr1, arr2, arr3 remain unchanged
+let arr1 = ['Four', 'score', 'and'];
+let arr2 = ['seven', 'years', 'ago'];
+let arr3 = ['our', 'fathers', 'brought', 'forth'];
+let concatArr = arr1.concat(arr2, arr3);
+// concatArr = ["Four", "score", "and", "seven", "years", "ago", "our", "fathers", "brought", "forth"]
+              </code></pre>
+            </div>
+          </div> 
+
           </div>
         </div>
 

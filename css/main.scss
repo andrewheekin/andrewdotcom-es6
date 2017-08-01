@@ -81,11 +81,11 @@ h1 {
   font-size: 31px!important;
 }
 
-.about *, .projects *, .contact *, .project-page p, .project-page h1, #cs h4, #cs p {
+.about *, .projects *, .contact *, .project-page p, .project-page h1 {
   font-family: 'avenir', 'avenir next', helvetica, arial, sans-serif;
 }
 
-.about, #cs {
+.about {
   animation: fade .6s;
   -moz-animation: fade .6s;
   -webkit-animation: fade .6s;
