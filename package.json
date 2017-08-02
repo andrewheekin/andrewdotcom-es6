@@ -6,7 +6,7 @@
   "scripts": {
     "start": "webpack-dev-server",
     "build": "WEBPACK_ENV=build webpack",
-    "deploy": "aws s3 sync . s3://andrewheekin.com/ --delete --exclude 'js/*' --exclude 'css/*' --exclude 'components/*' --exclude '.git/*' --exclude 'node_modules/*' --exclude 'build/*.json' --exclude 'package.json' --exclude 'webpack.config.js' --exclude '.DS_Store' --exclude '.babelrc' --exclude '.eslintrc' --exclude '.gitignore' --exclude 'npm-debug.log'"
+    "deploy": "npm run build && aws s3 sync . s3://andrewheekin.com/ --delete --exclude 'js/*' --exclude 'css/*' --exclude 'components/*' --exclude '.git/*' --exclude 'node_modules/*' --exclude 'build/*.json' --exclude 'package.json' --exclude 'webpack.config.js' --exclude '.DS_Store' --exclude '.babelrc' --exclude '.eslintrc' --exclude '.gitignore' --exclude 'npm-debug.log'"
   },
   "repository": {
     "type": "git",
