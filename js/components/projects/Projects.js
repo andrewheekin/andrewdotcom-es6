@@ -1,4 +1,4 @@
-import { router } from '../../js/scripts';
+import { router } from '../../scripts';
 
 export class Projects {
   constructor() {

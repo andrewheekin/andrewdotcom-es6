@@ -1,4 +1,4 @@
-import { $id, $cl } from '../../js/util';
+import { $id, $cl } from '../../util';
 
 export class CS {
   constructor() {
@@ -54,6 +54,46 @@ export class CS {
         </div>
 <!-#########################################################-->
         <div class="question">
+          <h4 class="question-title"><i class="fa fa-chevron-right question-chevron"></i>JS: Engine, runtime, and call stack</h4>
+          <div class="question-content">
+            <p>Javascript is single-threaded (single call stack) and uses a callback queue. Most popular JS engine is V8 from Google. Consists of 
+            two main components: The <b>memory heap</b> - where memory allocation happens - and the <b>call stack</b> - stack frames
+            that become executed code. The call stack is a data structure that records where in the code we are.            
+            <br><b>Web API's</b> - DOM (document), setTimeout, XMLHttpRequest
+            <br><b>Event Loop</b> - the event loop sits next to the call stack and is full of events that might take place. It has the ability 
+            to "listen" for an event. Only when the Execution Stack is empty, will JS process the event queue and check if a function should be 
+            run when an Event Queue action occurs. Ie, the browser asynchronously builds the event queue.the process that constantly checks 
+            whether the call stack is empty, and whenever it’s empty, it checks 
+            if the event queue has any functions waiting to be invoked. If it does, then the first function in the queue gets invoked and 
+            moved over into the call stack. If the event queue is empty, then this monitoring process just keeps on running indefinitely. 
+            <br><b>Callback Queue</b> - A JavaScript runtime contains a message queue, which is a list of messages to be processed. A 
+            function is associated with each message. When the stack has enough capacity, a message is taken out of the queue and 
+            processed. The processing consists of calling the associated function (and thus creating an initial stack frame). The message 
+            processing ends when the stack becomes empty again. 
+            <br><b>Maximum call stack size exceeded error</b> - when the call stack gets too big
+            <pre class="language-javascript"><code class="code">
+// Maximum call stack size exceeded
+function foo() {
+    foo();
+}
+foo();
+            </code></pre>            
+            <br><br><i>https://blog.sessionstack.com/how-does-javascript-actually-work-part-1-b0bacc073cf</i></p>
+            <i>https://blog.sessionstack.com/how-javascript-works-inside-the-v8-engine-5-tips-on-how-to-write-optimized-code-ac089e62b12e</i></p>
+          </div>
+        </div>        
+<!-#########################################################-->
+        <div class="question">
+          <h4 class="question-title"><i class="fa fa-chevron-right question-chevron"></i>HTTP request and response headers</h4>
+          <div class="question-content">
+            <p></p>
+            <pre class="language-javascript"><code class="code">
+
+            </code></pre>
+          </div>
+        </div>
+<!-#########################################################-->        
+        <div class="question">
           <h4 class="question-title"><i class="fa fa-chevron-right question-chevron"></i>JS: IIFE</h4>
           <div class="question-content">
             <p>Print the numbers 1 to 10, 500ms apart</p>
@@ -108,8 +148,18 @@ function sum() {
         <div class="question">
           <h4 class="question-title"><i class="fa fa-chevron-right question-chevron"></i>JS: Closures and let vs var</h4>
           <div class="question-content">
-            <p></p>
+            <p>A closure is a stack frame which is allocated when a function starts its execution, and not freed after the function returns (as if a 'stack frame' were allocated on the heap rather than the stack!).</p>
             <pre class="language-javascript"><code class="code">
+// sayHi function remembers the whattosay variable bc of its closure
+function greet(whattosay) {
+  return function(name) {
+    console.log(whattosay + ' ' + name);
+  }
+}
+var sayHi = greet('Hi'); 
+sayHi('Tony'); // outputs 'Hi Tony'
+
+
 // populate an array of functions using var in the for loop
 var a = [];
 for (var i = 0; i < 5; i++) {
@@ -148,7 +198,7 @@ function quickSort(arr, left, right) {
     if (left < index - 1) {
       quickSort(arr, left, index - 1);
     }
-    if (index < right) {
+    if (right > index) {
       quickSort(arr, index, right);
     }
   }
@@ -184,7 +234,8 @@ function partition(arr, left, right) {
             <p>O(1) space complexity, an in-place algorithm<br>
             Θ(n^2) avg time complexity<br>
             O(n^2) worst time complexity<br>
-            Ω(n) best time complexity</p>            
+            Ω(n) best time complexity<br>
+            <a href="https://www.youtube.com/watch?v=yIQuKSwPlro">https://www.youtube.com/watch?v=yIQuKSwPlro</a></p>            
             <pre class="language-javascript"><code class="code">
 const arr = [6,2,4,8,9,199,28,384,5];
 function bubbleSort(arr) {
@@ -274,6 +325,76 @@ function encodeString(str) {
         </div>
 <!-#########################################################-->
         <div class="question">
+          <h4 class="question-title"><i class="fa fa-chevron-right question-chevron"></i>Count number of island clusters in a 2D matrix</h4>
+          <div class="question-content">
+            <p>Given a 2D matrix of 1's and 0's, find the number of "islands" (clusters of 1's)<br>
+            http://www.geeksforgeeks.org/find-number-of-islands/</p>
+            <pre class="language-javascript"><code class="code">
+
+// JS
+class Graph {
+  constructor(row, col, matrix) {
+    this.row = row;
+    this.col = col;
+    this.matrix = matrix;
+  }
+
+  isSafe(i, j, visited) {
+    return (i >= 0 && i < this.row &&
+            j >= 0 && j < this.col &&
+            !visited[i][j] && this.matrix[i][j])
+  }
+
+  DFS(i, j, visited) {
+    const rowNbr = [-1, -1, -1,  0, 0,  1, 1, 1];
+    const colNbr = [-1,  0,  1, -1, 1, -1, 0, 1];
+    
+    visited[i][j] = true;
+ 
+    for (var k=0; k < 8; k++) {
+      if (this.isSafe(i + rowNbr[k], j + colNbr[k], visited))
+        this.DFS(i + rowNbr[k], j + colNbr[k], visited);
+    }
+  }
+  
+  countIslands() {
+    let visited = Array.from({length: this.row}).fill(Array.from({length: this.col}).fill(false));
+    let count = 0;
+    for (var i=0; i < this.row; i++) {
+      for (var j=0; j < this.col; j++) {
+        if (visited[i][j] == false && this.matrix[i][j] == 1) {
+          this.DFS(i, j, visited);
+          count += 1;
+          console.log(visited);
+        }
+      }
+    }
+    return count;
+  }
+}
+
+
+let graph = [[1, 1, 0, 0, 0],
+            [0, 1, 0, 0, 1],
+            [1, 0, 0, 1, 1],
+            [0, 0, 0, 0, 0],
+            [1, 0, 1, 0, 1],
+            [1, 0, 1, 0, 1],
+            [1, 0, 0, 0, 1],
+            [0, 0, 1, 0, 0]];
+ 
+ 
+let row = graph.length;
+let col = graph[0].length;
+let g = new Graph(row, col, graph);
+ 
+console.log(g.countIslands());
+
+            </code></pre>
+          </div>
+        </div>        
+<!-#########################################################-->
+        <div class="question">
           <h4 class="question-title"><i class="fa fa-chevron-right question-chevron"></i>Making change for an amount</h4>
           <div class="question-content">
             <p>Find all ways to make change for an amount of money given an array of coin denominations</p>
@@ -302,6 +423,19 @@ function makeChange(amount, denominations) {
 
   return changePossibilities[amount];
 }
+
+
+# python
+def make_change(amount, denominations):
+    change_possibilities = [0] * (amount + 1)  # populate a list of zeros
+    change_possibilities[0] = 1
+
+    for coin in denominations:
+        for higher_amount in xrange(coin, amount + 1):
+            remainder = higher_amount - coin
+            change_possibilities[higher_amount] += change_possibilities[remainder]
+
+    return change_possibilities[amount]
             </code></pre>
           </div>
         </div>        
@@ -523,7 +657,7 @@ obj.hasOwnProperty('d')  // false
 !('a' in obj)  // false
             </code></pre>
           </div>
-        </div>        
+        </div>
 <!-#########################################################-->  
         <div class="question">
           <h4 class="question-title"><i class="fa fa-chevron-right question-chevron"></i>Routine stuff</h4>
@@ -682,6 +816,16 @@ let num = 9999999999999999  // num is 10,000,000,000,000,000
 0.1 + 0.2 = 0.30000000000000004
 
 
+// Change data without mutation
+var player = {score: 1, name: 'Jeff'};
+
+var newPlayer = Object.assign({}, player, {score: 2});
+// Now player is unchanged, but newPlayer is {score: 2, name: 'Jeff'}
+
+// Or if you are using object spread syntax proposal, you can write:
+var newPlayer = {...player, score: 2};
+
+
             </code></pre>
           </div>
         </div>
@@ -703,16 +847,51 @@ Array.from({length:1000000}, (v, i) => i + 1).reduce((sum, val) => sum + val);
         </div>
 <!-#########################################################-->
         <div class="question">        
-          <h4 class="question-title"><i class="fa fa-chevron-right question-chevron"></i>Select all HTML elements on a page by class</h4>
+          <h4 class="question-title"><i class="fa fa-chevron-right question-chevron"></i>JS: Generate random num between 1 and 5</h4>
+          <div class="question-content">          
+            <p><code>Math.random()</code> returns a floating-point, pseudo-random number between 0 (inclusive) and 1 (exclusive)</p>
+            <pre class="language-javascript"><code class="code">
+// get a random integer btwn min (inclusive) and max (inclusive)
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+// example, generate random integer between 1 and 7, both inclusive
+function rand7() {
+  return Math.floor(Math.random() * 7) + 1;
+}
+
+// generate a random int between 1 and 5 from rand7()
+function rand5() {
+  let r = rand7();
+  return (r > 5) ? rand5() : r;
+}
+
+// generate a random int between 1 and 7 from rand5()
+function rand7() {
+  let oneToTwentfive = (rand5() - 1) * 5 + rand5();
+  while (true) {
+    if (oneToTwentfive > 21) continue;
+    return oneToTwentfive % 7 + 1;
+  }
+
+}
+            </code></pre>
+          </div>
+        </div>        
+<!-#########################################################-->
+        <div class="question">        
+          <h4 class="question-title"><i class="fa fa-chevron-right question-chevron"></i>Selecting HTML elements on a page</h4>
           <div class="question-content">          
             <p></p>
             <pre class="language-javascript"><code class="code">
 // plain javascript
-document.querySelectorAll('#id')
-document.querySelectorAll('.class')
-document.querySelector()
+document.querySelectorAll('#id')  // id name
+document.querySelectorAll('.class')  // class name
+document.querySelectorAll('p')  // tag type
+document.querySelector()  // same as querySelectorAll() but only returns the first matching element
 document.getElementById('theId')
-document.getElementsByClassName(theClass)  // returns an array
+document.getElementsByClassName('theClass')  // returns an array
 
 // JQuery
 $('*')  // all elements
@@ -723,6 +902,20 @@ $('img')  // all image elements
             </code></pre>
           </div>
         </div>
+<!-#########################################################-->
+        <div class="question">        
+          <h4 class="question-title"><i class="fa fa-chevron-right question-chevron"></i>Function currying in JS</h4>
+          <div class="question-content">          
+            <p>taking a function and creating a new function from it with some default params</p>
+            <pre class="language-javascript"><code class="code">
+function multiply(a, b) {
+  return a * b;
+}
+var multiplyByTwo = multiply.bind(this, 2);   // here, the bind is setting variable 'a' which will now always be 2
+multiplyByTwo(4);  // returns 8
+            </code></pre>
+          </div>
+        </div>        
 <!-#########################################################-->
         <div class="question">        
           <h4 class="question-title"><i class="fa fa-chevron-right question-chevron"></i>JS: Debounce</h4>
@@ -772,9 +965,24 @@ window.onmousemove = () => myEfficientFn();
         <div class="question">        
           <h4 class="question-title"><i class="fa fa-chevron-right question-chevron"></i>JS: Throttle</h4>
           <div class="question-content">          
-            <p></p>
+            <p>Allow the callback fn to be executed once per time period for the duration that an event is occuring. Fires immediately when the event first occurs.<br>
+            Q: how/when does the throttle function AND it's returned function both get invoked?</p>
             <pre class="language-javascript"><code class="code">
+function throttle(fn, wait) {
+  var time = Date.now();
+  return function() {
+    if ((time + wait - Date.now()) < 0) {
+      fn();
+      time = Date.now();
+    }
+  }
+}
 
+function cb() {
+  console.log('sup')
+};
+
+window.onmousemove = throttle(cb, 500);
             </code></pre>
           </div>
         </div>
@@ -838,12 +1046,28 @@ let numArr = arr.map(c => parseInt(c));
         </div>
 <!-#########################################################-->
         <div class="question">
-          <h4 class="question-title"><i class="fa fa-chevron-right question-chevron"></i>JS: call</h4>
+          <h4 class="question-title"><i class="fa fa-chevron-right question-chevron"></i>JS: bind(), call(), apply()</h4>
           <div class="question-content">
             <p></p>
             <pre class="language-javascript"><code class="code">
-let arr = Array.from('12345'); // ["1", "2", "3", "4", "5"]
-let numArr = arr.map(c => parseInt(c));
+var person = {
+  firstname: 'John',
+  lastname: 'Doe',
+  getFullName: function( ) {
+    var fullname = this.firstname + ' ' + this.lastname;
+    return fullname;
+  }
+}
+var logName = function(lang1, lang2) {
+  console.log('Logged: ' + this.getFullName());
+  console.log('Arguments: ' + lang1 + ' ' + lang2);
+}
+var logPersonName = logName.bind(person); // binds the person object to logName's global object
+logPersonName('en' );
+// the call method called on the function below will bind the person object AND execute the function
+logName.call(person, 'en', 'es');
+// the apply method is the exact same as the call but with an array of params
+logName.apply(person, ['en', 'es']);
             </code></pre>
           </div>
         </div>        
@@ -1457,6 +1681,9 @@ let res = a.shift();  // res = 1, arr = [2, 3]
 let arr = [1, 2, 3, 4, 5];  // arr is still [1, 2, 3, 4, 5]
 let sliced1 = arr.slice(3);  // sliced1 is [4, 5]
 let sliced2 = arr.slice(1, 2);  // sliced2 is [2]
+
+// slice() with no arguments can also be used to return the original array but not modify it
+let sliced3 = arr.slice();  // sliced1 is [1, 2, 3, 4, 5]
               </code></pre>
             </div>
           </div>
@@ -1551,6 +1778,29 @@ a.unshift(4, 5);  // returns 5, arr = [4, 5, 1, 2, 3]
           </div>
         </div>
 <!-#########################################################-->
+        <div class="question">        
+          <h4 class="question-title"><i class="fa fa-chevron-right question-chevron"></i>Python: routine stuff</h4>
+          <div class="question-content">          
+            <p></p>
+            <pre class="language-python"><code class="code">
+# make a list of 100 zeros 
+zero_list = [0] * (100)
+
+# iterate over a list
+for zero in zero_list:
+    print(zero)
+
+# python for loop, print 0-9
+for i in xrange(10):
+    print(i)
+    
+# python for loop, print 10-20
+for i in xrange(10, 21):
+    print(i)  
+            </code></pre>
+          </div>
+        </div>
+<!-#########################################################-->        
         <div class="question">        
           <h4 class="question-title"><i class="fa fa-chevron-right question-chevron"></i>Python: TempTracker class</h4>
           <div class="question-content">

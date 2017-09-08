@@ -5,11 +5,11 @@ import Navigo from 'navigo';
 import { $id, $cl } from './util';
 
 //components scripts
-import { About } from '../components/About';
-import { Contact } from '../components/Contact';
-import { Projects } from '../components/projects/Projects';
-import { ProjectPage } from '../components/projects/ProjectPage';
-import { CS } from '../components/CS/CS';
+import { About } from './components/About';
+import { Contact } from './components/Contact';
+import { Projects } from './components/projects/Projects';
+import { ProjectPage } from './components/projects/ProjectPage';
+import { CS } from './components/CS/CS';
 
 
 // let router = new Navigo(null, true, '#!'); // using hash
