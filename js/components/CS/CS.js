@@ -711,6 +711,13 @@ let obj = {a: 1, b: 2, c: 'hello'};
 delete obj.a /* OR */ delete obj[a]
 
 
+// STRANGE COERCION
+!!(null >= 0)  // coerces to true
+!!(null > 0)  // false
+!!(null == 0)  // false
+// https://blog.campvanilla.com/javascript-the-curious-case-of-null-0-7b131644e274
+
+
 // Javascript void(exp) evaluates expression exp then returns undefined
 // Void can also be used to turn a function declaration into an internally invoked function expression.
 // The function iife is never declared.
