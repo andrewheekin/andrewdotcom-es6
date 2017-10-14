@@ -957,6 +957,15 @@ function debounce(callback, wait, context = this) {
   }
 }
 
+// simpler debounce function in same context
+function debounce(callback, wait) {
+  let timeout;    
+  return () => {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => callback(), wait);
+  }
+}
+
 // implement the debounce function on a mousemove event
 let myEfficientFn = debounce(() => {
   // All the taxing stuff you do
@@ -973,12 +982,11 @@ window.onmousemove = () => myEfficientFn();
           <h4 class="question-title"><i class="fa fa-chevron-right question-chevron"></i>JS: Throttle</h4>
           <div class="question-content">          
             <p>Allow the callback fn to be executed once per time period for the duration that an event is occuring. Fires immediately when the event first occurs.<br>
-            Q: how/when does the throttle function AND it's returned function both get invoked?</p>
             <pre class="language-javascript"><code class="code">
 function throttle(fn, wait) {
   var time = Date.now();
-  return function() {
-    if ((time + wait - Date.now()) < 0) {
+  return () => {
+    if (time + wait < Date.now()) {
       fn();
       time = Date.now();
     }

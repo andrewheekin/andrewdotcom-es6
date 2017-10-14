@@ -12,8 +12,8 @@ export class About {
         </div>
         <div class="about-section">
           <h4>Currently</h4>
-          <p>I'm a software engineer at <a href="https://mochibox.io">Mochibox</a></p>
-        </div>        
+          <p>I'm a software engineer at <a href="https://rizemoney.com">Rize</a></p>
+        </div>  
         <div class="about-section">
           <h4>Past</h4>
           <p>Software engineer at <a href="http://streetshares.com">StreetShares</a>, building loan underwriting software</p>
