@@ -515,18 +515,22 @@ function resolveAfter2Seconds(message) {
 async function add1(x) {
   let a = resolveAfter2Seconds(20);
   let b = resolveAfter2Seconds(30);
-  return x + await a + await b;
+  let sum = x + await a + await b;
+  console.log(sum) // prints x + a + b after 2 seconds
+  return;
 }
-add1(10).then(v => console.log(v));  // prints 60 after 2 seconds
+add1(10) // prints 60 after 2 seconds
 
 
 // two await statements in series, b waits to execute until a finishes
 async function add2(x) {
     let a = await resolveAfter2Seconds(20);
     let b = await resolveAfter2Seconds(30);
-    return x + a + b;
+    let sum = x + a + b;
+    console.log(sum) // prints x + a + b after 4 seconds    
+    return;
 }
-add2(10).then(v => console.log(v));  // prints 60 after 4 seconds
+add2(10) // prints 60 after 4 seconds
             </code></pre>
             <pre class="language-javascript"><code class="code">
 // another async/await vs .then() example
